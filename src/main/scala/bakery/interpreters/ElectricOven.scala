@@ -15,7 +15,7 @@ final class ElectricOven[F[_]: Sync] private (temperature: Int)
         new ElectricOven[F](temperature = 100)
       })
 
-  override def cook(bread: Bread): F[Bread] = {
+  override def bake(bread: Bread): F[Bread] = {
     if (temperature == 0) {
       Sync[F].raiseError(ColdOvenError)
     } else {

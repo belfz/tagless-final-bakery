@@ -15,7 +15,7 @@ object TaglessFinalKitchen extends IOApp {
       _ <- IO(println("Preheating the electric oven... done!"))
       preheatedOven <- coldOven.preheat
       _ <- IO(println(s"Baking the $uncookedBread..."))
-      cookedBread <- preheatedOven.cook(uncookedBread)
+      cookedBread <- preheatedOven.bake(uncookedBread)
       _ <- IO(println(s"The bread grows twice in size!"))
     } yield cookedBread
 
