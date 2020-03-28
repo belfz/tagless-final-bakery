@@ -11,7 +11,7 @@ import bakery.models.Bread
 final class ElectricOven[F[_]: Sync] private (temperature: Int)
     extends Oven[F] {
   override def preheat: F[Oven[F]] =
-    Sync[F].delay((println("Preheating the electric oven... done!"))) >> Sync[F]
+    Sync[F].delay(println("Preheating the electric oven... done!")) >> Sync[F]
       .delay({
         new ElectricOven[F](temperature = 100)
       })
