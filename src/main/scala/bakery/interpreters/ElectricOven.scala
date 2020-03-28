@@ -9,12 +9,13 @@ import bakery.models.Bread._
 
 // using context bound instead of implicit values here
 // equally, could have used implicit values this way: final class SyncOven[F[_]] private (var temperature: Int)(implicit f: Sync[F]) extends ...
-final class SyncOven[F[_]: Sync] private (var temperature: Int)
+final class ElectricOven[F[_]: Sync] private (var temperature: Int)
     extends Oven[F] {
   override def preheat: F[Unit] =
-    Sync[F].delay((println("Preheating the oven... done!"))) >> Sync[F].delay({
-      temperature = 100
-    })
+    Sync[F].delay((println("Preheating the electric oven... done!"))) >> Sync[F]
+      .delay({
+        temperature = 100
+      })
 
   override def cook(bread: Bread): F[Bread] = {
     if (temperature == 0) {
@@ -27,6 +28,6 @@ final class SyncOven[F[_]: Sync] private (var temperature: Int)
   }
 }
 
-object SyncOven {
-  def make[F[_]: Sync]: SyncOven[F] = new SyncOven[F](0)
+object ElectricOven {
+  def make[F[_]: Sync]: ElectricOven[F] = new ElectricOven[F](0)
 }
