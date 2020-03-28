@@ -1,7 +1,6 @@
 package bakery.interpreters
 
 import cats.effect.Sync
-import cats.implicits._
 import bakery.algebras.Oven
 import bakery.errors.ColdOvenError
 import bakery.models.Bread
