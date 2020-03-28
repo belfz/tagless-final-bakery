@@ -1,4 +1,4 @@
-name := "practical-fp-in-scala"
+name := "tagless-final-bakery"
 
 version := "0.1"
 
