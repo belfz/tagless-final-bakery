@@ -1,4 +1,4 @@
-package oven.errors
+package bakery.errors
 
 import scala.util.control.NoStackTrace
 

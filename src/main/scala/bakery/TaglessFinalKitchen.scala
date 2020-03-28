@@ -1,10 +1,10 @@
-package oven
+package bakery
 
 import cats.effect.{ExitCode, IO, IOApp}
 import cats.implicits._
-import oven.errors.ColdOvenError
-import oven.interpreters.SyncOven
-import oven.models.Bread
+import bakery.errors.ColdOvenError
+import bakery.interpreters.SyncOven
+import bakery.models.Bread
 
 object TaglessFinalKitchen extends IOApp {
   override def run(args: List[String]): IO[ExitCode] = {

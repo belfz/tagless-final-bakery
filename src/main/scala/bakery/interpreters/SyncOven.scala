@@ -1,11 +1,11 @@
-package oven.interpreters
+package bakery.interpreters
 
 import cats.effect.Sync
 import cats.implicits._
-import oven.algebras.Oven
-import oven.errors.ColdOvenError
-import oven.models.Bread
-import oven.models.Bread._
+import bakery.algebras.Oven
+import bakery.errors.ColdOvenError
+import bakery.models.Bread
+import bakery.models.Bread._
 
 // using context bound instead of implicit values here
 // equally, could have used implicit values this way: final class SyncOven[F[_]] private (var temperature: Int)(implicit f: Sync[F]) extends ...

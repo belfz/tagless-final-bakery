@@ -1,4 +1,4 @@
-package oven.models
+package bakery.models
 
 import io.estatico.newtype.macros.newtype
 import Bread._

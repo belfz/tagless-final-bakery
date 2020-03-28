@@ -1,6 +1,6 @@
-package oven.algebras
+package bakery.algebras
 
-import oven.models.Bread
+import bakery.models.Bread
 
 trait Oven[F[_]] {
   def preheat: F[Unit]
