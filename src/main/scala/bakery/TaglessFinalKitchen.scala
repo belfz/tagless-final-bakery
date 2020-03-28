@@ -9,9 +9,17 @@ import bakery.models.Bread
 object TaglessFinalKitchen extends IOApp {
   override def run(args: List[String]): IO[ExitCode] = {
     val uncookedBread = Bread.prepare
-    val oven = ElectricOven.make[IO]
-    oven.preheat
-      .flatMap(_.cook(uncookedBread))
+    val coldOven = ElectricOven.make[IO]
+
+    val bakingProgram = for {
+      _ <- IO(println("Preheating the electric oven... done!"))
+      preheatedOven <- coldOven.preheat
+      _ <- IO(println(s"Baking the $uncookedBread..."))
+      cookedBread <- preheatedOven.cook(uncookedBread)
+      _ <- IO(println(s"The bread grows twice in size!"))
+    } yield cookedBread
+
+    bakingProgram
       .recoverWith({
         case ColdOvenError =>
           IO(
