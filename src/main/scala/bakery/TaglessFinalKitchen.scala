@@ -10,16 +10,15 @@ object TaglessFinalKitchen extends IOApp {
   override def run(args: List[String]): IO[ExitCode] = {
     val uncookedBread = Bread.prepare
     val oven = ElectricOven.make[IO]
-    (oven.preheat >>
-      oven
-        .cook(uncookedBread))
+    oven.preheat
+      .flatMap(_.cook(uncookedBread))
       .recoverWith({
         case ColdOvenError =>
-          IO.delay(
+          IO(
             println("The oven was cold, your bread might not be good to eat :(")
-          ) >> IO.delay(uncookedBread)
+          ) >> IO(uncookedBread)
       })
-      .flatMap(bread => IO.delay(println(s"Here's your bread: $bread")))
+      .flatMap(bread => IO(println(s"Here's your bread: $bread")))
       .as(ExitCode.Success)
   }
 }
