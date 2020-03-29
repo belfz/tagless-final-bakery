@@ -16,7 +16,7 @@ object MainIO extends IOApp {
       preheatedOven <- coldOven.preheat
       _ <- IO(println(s"Baking the $unbakedBread..."))
       bakedBread <- preheatedOven.bake(unbakedBread)
-      _ <- IO(println(s"The bread grows twice in size!"))
+      _ <- IO(println(s"The bread grows twice in size!")) // this will NOT be called when operating on the cold oven!
     } yield bakedBread
 
     bakingProgram
