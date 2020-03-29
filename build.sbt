@@ -12,6 +12,8 @@ libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-core" % "2.1.0",
   "org.typelevel" %% "cats-effect" % "2.1.0",
   "io.estatico" %% "newtype" % "0.4.3",
+  "dev.zio" %% "zio" % "1.0.0-RC17",
+  "dev.zio" %% "zio-interop-cats" % "2.0.0.0-RC10"
 )
 
 scalacOptions += "-Ymacro-annotations"
